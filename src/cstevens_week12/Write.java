@@ -18,15 +18,15 @@ public class Write {
 
     //Declarations
     ArrayList numbers = new ArrayList<>();
-    String fileName;
+    String filePath;
 
     /**
      * Constructor
      *
-     * @param fileName
+     * @param filePath
      */
-    public Write(String fileName) {
-        this.fileName = fileName;
+    public Write(String filePath) {
+        this.filePath = filePath;
 
     }
 
@@ -48,12 +48,11 @@ public class Write {
      */
     public void writeNumbers() throws FileNotFoundException {
 
-        File file = new File("C:/W12Assignment/" + fileName + ".txt");
+        File file = new File(filePath);
 
         try (PrintWriter myWriter = new PrintWriter(file)) {
 
             for (int i = 0; i < numbers.size(); i++) {
-                //            System.out.printf("Enter number %d -> ", i);
                 double num = (double) numbers.get(i);
 
                 myWriter.printf("%.4f" + System.getProperty("line.separator"),

@@ -8,6 +8,7 @@ package cstevens_week12;
  * @Description: Exception Handling & File I/O
  */
 //Imports
+
 //Begin Validate subclass
 public class Validate {
 
@@ -29,8 +30,6 @@ public class Validate {
             System.out.println();
             FLAG = true;
         } else {
-//            System.out.println("\nThank you for using My Statistics Calculator. "
-//                    + "Goodbye.\n\n");
             FLAG = true;
         }
     } //End setYesNo method
@@ -43,25 +42,31 @@ public class Validate {
     public boolean getYesNo() {
         return FLAG;
     } //End getYesNo method
-    
-        /**
+
+//    static boolean isInteger(int number){
+//        return Math.ceil(number) == Math.floor(number); 
+//    }
+    /**
      * Validate a range of choices
+     *
      * @param x
      * @param minVal
-     * @param maxVal 
+     * @param maxVal
      */
-    public void setValidateRange(int x, int minVal, int maxVal){
-        if ((x < minVal) || (x > maxVal)) {
-            System.err.printf("Exception!\nPlease limit your choice to between %d and %d!: ", minVal, maxVal);
+    public void setValidateRange(int x, int minVal, int maxVal) {
+        if ((x < minVal) || (x > maxVal) /*|| (!isInteger(x))*/) {
+            System.err.printf("Exception!\nPlease limit your choice to "
+                    + "between %d and %d: ", minVal, maxVal);
             FLAG = false;
         } else {
             FLAG = true;
         }
     }
-    
+
     /**
      * Return boolean value for range checking
-     * @return 
+     *
+     * @return
      */
     public boolean getRange() {
         return FLAG;

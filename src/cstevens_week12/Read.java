@@ -22,38 +22,40 @@ public class Read {
     double max;
     double result;
     double num1;
-    String fileName;
+    String filePath;
     String line;
 
     /**
      * Constructor
      *
-     * @param fileName
+     * @param filePath
      */
-    public Read(String fileName) {
-        this.fileName = fileName;
-
+    public Read(String filePath) {
+        this.filePath = filePath;
     }
 
     /**
      * Method @readFile: read data from specified file
      *
-     * @throws FileNotFoundException
      */
-    public void readFile() throws FileNotFoundException {
+    public void readFile() {
 
-        File file = new File("C:/W12Assignment/" + fileName + ".txt");
+        File file = new File(filePath);
 
-        try (Scanner input = new Scanner(file)) {
-            System.out.println("\nThe numbers in this file are:");
-            while (input.hasNextLine()) {
-                line = input.nextLine();
-                System.out.println(line);
-                num1 = Double.parseDouble(line);
-                numbers.add(num1);
-                setAvg();
+        do {
+            try (Scanner input = new Scanner(file)) {
+                System.out.println("\nThe numbers in this file are:");
+                while (input.hasNextLine()) {
+                    line = input.nextLine();
+                    System.out.println(line);
+                    num1 = Double.parseDouble(line);
+                    numbers.add(num1);
+                    setAvg();
+                }
+            } catch (FileNotFoundException ex) {
+                System.out.println("\nFile does not exist.");
             }
-        }
+        } while (!file.exists());
     } //End readFile method
 
     /**
@@ -78,7 +80,6 @@ public class Read {
      * Method @setAvg: calculate average of arrayList: numbers
      */
     public void setAvg() {
-        //Average
         double sum = 0;
         for (int i = 0; i < numbers.size(); i++) {
             sum = sum + (double) numbers.get(i);
